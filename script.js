@@ -3,21 +3,24 @@ document.addEventListener('DOMContentLoaded', function() {
     const submitBtn = document.getElementById('submitQuery');
     const responseDiv = document.getElementById('response');
     
+    // The local network IP address and port where your Server2 is running
+    const server2Url = 'http://192.168.1.100:3000/api/v1/sql';
+
     // Predefined patient data to be inserted
     const insertDataSql = `INSERT INTO patient (name, age, address) VALUES ('John Doe', 30, '123 Main St'), ('Jane Doe', 28, '456 Elm St');`;
 
     // Insert data event listener
     insertBtn.addEventListener('click', function() {
-        postData('/api/v1/sql', insertDataSql);
+        postData(server2Url, insertDataSql);
     });
 
     // Submit query event listener
     submitBtn.addEventListener('click', function() {
         const query = document.getElementById('sqlQuery').value.trim();
         if (query.toUpperCase().startsWith('SELECT')) {
-            fetchData('/api/v1/sql', query);
+            fetchData(server2Url, query);
         } else if (query.toUpperCase().startsWith('INSERT')) {
-            postData('/api/v1/sql', query);
+            postData(server2Url, query);
         } else {
             alert('Only SELECT and INSERT statements are allowed.');
         }
@@ -32,8 +35,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 },
                 body: JSON.stringify({query: data}),
             });
-            const json = await response.json();
-            responseDiv.innerHTML = `Response: ${JSON.stringify(json)}`;
+            if (response.ok && response.headers.get('Content-Type').includes('application/json')) {
+                const json = await response.json();
+                responseDiv.innerHTML = `Response: ${JSON.stringify(json)}`;
+            } else {
+                responseDiv.innerHTML = `Server responded with status: ${response.status}`;
+            }
         } catch (error) {
             console.error('Error:', error);
             responseDiv.innerHTML = `Error: ${error.toString()}`;
@@ -45,11 +52,16 @@ document.addEventListener('DOMContentLoaded', function() {
             const response = await fetch(`${url}?query=${encodeURIComponent(query)}`, {
                 method: 'GET',
             });
-            const json = await response.json();
-            responseDiv.innerHTML = `Response: ${JSON.stringify(json)}`;
+            if (response.ok && response.headers.get('Content-Type').includes('application/json')) {
+                const json = await response.json();
+                responseDiv.innerHTML = `Response: ${JSON.stringify(json)}`;
+            } else {
+                responseDiv.innerHTML = `Server responded with status: ${response.status}`;
+            }
         } catch (error) {
             console.error('Error:', error);
             responseDiv.innerHTML = `Error: ${error.toString()}`;
         }
     }
 });
+
