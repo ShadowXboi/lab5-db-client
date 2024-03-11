@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const responseDiv = document.getElementById('response');
     
     // The local network IP address and port where your Server2 is running
-    const server2Url = 'http://192.168.1.100:3000/api/v1/sql';
+    const server2Url = 'https://urchin-app-9bl2m.ondigitalocean.app/api/v1/sql';
 
     // Predefined patient data to be inserted
     const insertDataSql = `INSERT INTO patient (name, age, address) VALUES ('John Doe', 30, '123 Main St'), ('Jane Doe', 28, '456 Elm St');`;
