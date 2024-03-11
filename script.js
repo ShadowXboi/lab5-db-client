@@ -3,11 +3,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const submitBtn = document.getElementById('submitQuery');
     const responseDiv = document.getElementById('response');
     
-    // The local network IP address and port where your Server2 is running
+   
     const server2Url = 'https://urchin-app-9bl2m.ondigitalocean.app/api/v1/sql';
 
-    // Predefined patient data to be inserted
-    const insertDataSql = `INSERT INTO patient (name, age, address) VALUES ('John Doe', 30, '123 Main St'), ('Jane Doe', 28, '456 Elm St');`;
+    // predefined patient data to be inserted
+    const insertDataSql = `INSERT INTO patient (name, dateOfBirth) VALUES ('John Doe', '1990-01-01'), ('Jane Doe', '1992-01-01');`;
 
     // Insert data event listener
     insertBtn.addEventListener('click', function() {
@@ -64,4 +64,3 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
-
