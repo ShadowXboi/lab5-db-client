@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const responseDiv = document.getElementById('response');
     
    
-    const server2Url = 'https://monkfish-app-69t24.ondigitalocean.app/api/vi/sql';
+    const server2Url = 'https://monkfish-app-69t24.ondigitalocean.app/api/v1/sql';
     
 
     // predefined patient data to be inserted
