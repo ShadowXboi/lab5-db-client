@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const responseDiv = document.getElementById('response');
     
    
-    const server2Url = 'https://urchin-app-9bl2m.ondigitalocean.app/api/v1/sql';
+    const server2Url = 'https://monkfish-app-69t24.ondigitalocean.app/api/vi/sql';
+    
 
     // predefined patient data to be inserted
     const insertDataSql = `INSERT INTO patient (name, dateOfBirth) VALUES ('John Doe', '1990-01-01'), ('Jane Doe', '1992-01-01');`;
@@ -64,3 +65,4 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
+
