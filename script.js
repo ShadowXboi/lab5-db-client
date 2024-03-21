@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
 
     // predefined patient data to be inserted
-    const insertDataSql = `INSERT INTO patient (name, dateOfBirth) VALUES ('John Doe', '1990-01-01'), ('Jane Doe', '1992-01-01');`;
+    const insertDataSql = `INSERT INTO patient (name, dateOfBirth) VALUES ('Sara Brown', '1901-01-01'),('John Smith', '1941-01-01'),('Jack Ma', '1961-01-01'), ('Elon Musk', '1999-01-01');`;
 
     // Insert data event listener
     insertBtn.addEventListener('click', function() {
